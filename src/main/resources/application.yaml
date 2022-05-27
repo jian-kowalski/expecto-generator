@@ -1,0 +1,79 @@
+initializr:
+  name:
+    value: default
+  description:
+    value: 'Projeto com default'
+  group-id:
+    value: com.jiankowalski
+  artifact-id:
+    value: default-app
+  bootVersions:
+    - id: 2.7.0
+      default: true
+  javaVersions:
+    - id: 17
+      default: true
+  languages:
+    - name: Java
+      id: java
+      default: true
+  packagings:
+    - name: Jar
+      id: jar
+      default: true
+  types:
+    - name: Maven Project
+      id: maven-project
+      description: Generate a Maven based project archive
+      tags:
+        build: maven
+        format: project
+      default: true
+      action: /starter.zip
+    - name: Maven POM
+      id: maven-build
+      description: Generate a Maven pom.xml
+      tags:
+        build: maven
+        format: build
+      default: false
+      action: /pom.xml
+  dependencies:
+    - name: Web
+      content:
+        - name: Spring Web
+          id: web
+          description: Build web, including RESTful, applications using Spring MVC. Uses Apache Tomcat as the default embedded container.
+          facets:
+            - web
+            - json
+          links:
+            - rel: guide
+              href: https://spring.io/guides/gs/rest-service/
+              description: Building a RESTful Web Service
+            - rel: reference
+              href: https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-developing-web-applications
+            - rel: guide
+              href: https://spring.io/guides/gs/serving-web-content/
+              description: Serving Web Content with Spring MVC
+            - rel: guide
+              href: https://spring.io/guides/tutorials/bookmarks/
+              description: Building REST services with Spring
+    - name: Ops
+      content:
+        - name: Spring Boot Actuator
+          id: actuator
+          description: Supports built in (or custom) endpoints that let you monitor and manage your application - such as application health, metrics, sessions, etc.
+          links:
+            - rel: guide
+              href: https://spring.io/guides/gs/actuator-service/
+              description: Building a RESTful Web Service with Spring Boot Actuator
+            - rel: reference
+              href: https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#production-ready
+        - name: H2 Database
+          id: h2
+          description: Provides a fast in-memory database that supports JDBC API and R2DBC access, with a small (2mb) footprint. Supports embedded and server modes as well as a browser based console application.
+          groupId: com.h2database
+          artifactId: h2
+          scope: runtime
+          starter: false
